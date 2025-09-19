@@ -92,6 +92,8 @@ dev = [
     { name = "ifaddr" },
     { name = "mypy", version = "1.14.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
     { name = "mypy", version = "1.18.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
+    { name = "mypy-baseline", version = "0.7.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "mypy-baseline", version = "0.7.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
     { name = "pytest", version = "8.3.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
     { name = "pytest", version = "8.4.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
     { name = "pytest-asyncio", version = "0.24.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
@@ -118,6 +120,7 @@ dev = [
     { name = "flake8", specifier = ">=5.0.4" },
     { name = "ifaddr", specifier = ">=0.2.0" },
     { name = "mypy", specifier = ">=1.14.1" },
+    { name = "mypy-baseline", specifier = ">=0.7.2" },
     { name = "pytest", specifier = ">=8.3.5" },
     { name = "pytest-asyncio", specifier = ">=0.24.0" },
     { name = "pyyaml", specifier = ">=6.0.2" },
@@ -1191,6 +1194,33 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/9b/61/b9f48e1714ce87c7bf0358eb93f60663740ebb08f9ea886ffc670cea7933/mypy-1.18.2-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:030c52d0ea8144e721e49b1f68391e39553d7451f0c3f8a7565b59e19fcb608b", size = 13491552, upload-time = "2025-09-19T00:10:13.753Z" },
     { url = "https://files.pythonhosted.org/packages/c9/66/b2c0af3b684fa80d1b27501a8bdd3d2daa467ea3992a8aa612f5ca17c2db/mypy-1.18.2-cp39-cp39-win_amd64.whl", hash = "sha256:aa5e07ac1a60a253445797e42b8b2963c9675563a94f11291ab40718b016a7a0", size = 9765635, upload-time = "2025-09-19T00:10:30.993Z" },
     { url = "https://files.pythonhosted.org/packages/87/e3/be76d87158ebafa0309946c4a73831974d4d6ab4f4ef40c3b53a385a66fd/mypy-1.18.2-py3-none-any.whl", hash = "sha256:22a1748707dd62b58d2ae53562ffc4d7f8bcc727e8ac7cbc69c053ddc874d47e", size = 2352367, upload-time = "2025-09-19T00:10:15.489Z" },
+]
+
+[[package]]
+name = "mypy-baseline"
+version = "0.7.2"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.8.1' and python_full_version < '3.9'",
+    "python_full_version < '3.8.1'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/69/1f/694a1d21e1d441effaf7aef400c84644f08ff074dfe936f8e39deda4883d/mypy_baseline-0.7.2.tar.gz", hash = "sha256:cffd6943a5d8959c15951ffe04f020c9010408711eee5113a507e0f1816d9a2d", size = 318825, upload-time = "2024-10-17T08:39:42.85Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/74/59/09a7b342320cee87636c6a4df7a131f19b939b2b87148ded059ead1c7d05/mypy_baseline-0.7.2-py3-none-any.whl", hash = "sha256:11db405082075f244c808d9268130ea95554ec2b8856b5c9bb09df539dc1836a", size = 17654, upload-time = "2024-10-17T08:39:40.193Z" },
+]
+
+[[package]]
+name = "mypy-baseline"
+version = "0.7.3"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.11'",
+    "python_full_version == '3.10.*'",
+    "python_full_version == '3.9.*'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/65/2a/03288dab6d5f24d187ba0c223f6b3035d9a29de3dd31a3e105a0d4f1b5da/mypy_baseline-0.7.3.tar.gz", hash = "sha256:325f0695310eb8f5c0f10fa7af36ee1b3785a9d26b886a61c07b4a8eddb28d29", size = 319108, upload-time = "2025-05-30T08:43:00.629Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1f/93/7780302b206a8e8e767ce763ef06159725d1323acbe55e46a1cd1ffd109d/mypy_baseline-0.7.3-py3-none-any.whl", hash = "sha256:bd7fa899e687d75af2e3f392a9d6d1790e65dae3d31fe12525cc14f26d866b74", size = 17868, upload-time = "2025-05-30T08:42:58.262Z" },
 ]
 
 [[package]]

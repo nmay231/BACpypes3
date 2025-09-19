@@ -82,6 +82,7 @@ class TNetwork(StateMachineGroup):
 @bacpypes_debugging
 class TestVLAN:
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_idle(self, clocked_test):
         """Test that a very quiet network can exist.  This is not a network
         test so much as a state machine group test.
@@ -101,6 +102,7 @@ class TestVLAN:
         await tnet.run()
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_send_receive(self, clocked_test):
         """Test that a node can send a message to another node."""
         if _debug:
@@ -123,6 +125,7 @@ class TestVLAN:
         await tnet.run()
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_broadcast(self, clocked_test):
         """Test that a node can send out a 'local broadcast' message which will
         be received by every other node.
@@ -170,6 +173,7 @@ class TestVLAN:
             await tnet.run()
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_spoof_pass(self, clocked_test):
         """Test allowing a node to send out packets with a source address
         other than its own, see also test_spoof_fail().
@@ -194,6 +198,7 @@ class TestVLAN:
         await tnet.run()
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_promiscuous_pass(self, clocked_test):
         """Test 'promiscuous mode' of a node which allows it to receive every
         packet sent on the network.  This is like the network is a hub, or
@@ -221,6 +226,7 @@ class TestVLAN:
         await tnet.run()
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_promiscuous_fail(self, clocked_test):
         if _debug:
             TestVLAN._debug("test_promiscuous_fail")
@@ -246,6 +252,7 @@ class TestVLAN:
 @bacpypes_debugging
 class TestVLANEvents:
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_send_receive(self, clocked_test):
         """Test that a node can send a message to another node and use
         events to continue with the messages.

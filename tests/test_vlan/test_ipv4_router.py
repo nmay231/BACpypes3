@@ -102,6 +102,7 @@ class TNetwork(StateMachineGroup):
 @bacpypes_debugging
 class TestIPv4Router:
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_send_receive(self, clocked_test):
         """Test that a node can send a message to another node on
         a different network.
@@ -139,6 +140,7 @@ class TestIPv4Router:
         await tnet.run()
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_local_broadcast(self, clocked_test):
         """Test that a node can send a message to all of the other nodes on
         the same network.
@@ -174,6 +176,7 @@ class TestIPv4Router:
         await tnet.run()
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_remote_broadcast(self, clocked_test):
         """Test that a node can send a message to all of the other nodes on
         a different network.

@@ -23,6 +23,7 @@ dev = [
     "flake8>=5.0.4",
     "ifaddr>=0.2.0",
     "mypy>=1.14.1",
+    "mypy-baseline>=0.7.2",
     "pytest>=8.3.5",
     "pytest-asyncio>=0.24.0",
     "pyyaml>=6.0.2",

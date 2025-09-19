@@ -1,4 +1,12 @@
 set unstable
+# NOTE: I'm currently windows first simply because everything else I do is Windows, even though I mostly hate it...
+set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
+
+mypy:
+    uv run mypy bacpypes3 | uv run mypy-baseline filter
+
+pytest:
+    uv run pytest
 
 [script, unix]
 bdist:

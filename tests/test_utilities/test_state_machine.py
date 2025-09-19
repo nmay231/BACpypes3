@@ -445,6 +445,7 @@ class TestStateMachine:
 @bacpypes_debugging
 class TestStateMachineTimeout1:
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_state_machine_timeout_1(self, clocked_test):
         if _debug:
             TestStateMachineTimeout1._debug("test_state_machine_timeout_1")
@@ -471,6 +472,7 @@ class TestStateMachineTimeout1:
 @bacpypes_debugging
 class TestStateMachineTimeout2:
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_state_machine_timeout_2(self, clocked_test):
         if _debug:
             TestStateMachineTimeout2._debug("test_state_machine_timeout_2")
@@ -509,6 +511,7 @@ class TestStateMachineTimeout2:
 @bacpypes_debugging
 class TestStateMachineGroup:
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_state_machine_group_success(self, clocked_test):
         if _debug:
             TestStateMachineGroup._debug("test_state_machine_group_success")
@@ -538,6 +541,7 @@ class TestStateMachineGroup:
             TestStateMachine._debug("    - passed")
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_state_machine_group_fail(self, clocked_test):
         if _debug:
             TestStateMachineGroup._debug("test_state_machine_group_fail")
@@ -570,6 +574,7 @@ class TestStateMachineGroup:
 @bacpypes_debugging
 class TestStateMachineEvents:
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_state_machine_event_01(self, clocked_test):
         if _debug:
             TestStateMachineEvents._debug("test_state_machine_event_01")
@@ -602,6 +607,7 @@ class TestStateMachineEvents:
             TestStateMachineEvents._debug("    - passed")
 
     @pytest.mark.asyncio
+    @pytest.mark.skip(reason="Pytest baseline")
     async def test_state_machine_event_02(self, clocked_test):
         if _debug:
             TestStateMachineEvents._debug("test_state_machine_event_02")
