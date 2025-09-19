@@ -2,9 +2,10 @@
 __pycache__/
 *.py[cod]
 
-# Editor backups
+# Editors
 *~
 *.bak
+.vscode/
 
 # Distribution / packaging
 .Python
