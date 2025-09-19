@@ -40,7 +40,6 @@ def register_npdu_type(class_):
 
 @bacpypes_debugging
 class NPCI(PCI, DebugContents):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = (
         "npduVersion",
@@ -357,7 +356,6 @@ class NPDU(NPCI, PDUData):
 
 @bacpypes_debugging
 class NetworkCodec(Client[PDU], Server[NPDU]):
-
     _debug: Callable[..., None]
 
     def __init__(self, cid=None, sid=None):
@@ -442,7 +440,6 @@ def key_value_contents(use_dict=None, as_class=dict, key_values=()):
 
 @register_npdu_type
 class WhoIsRouterToNetwork(NPDU):
-
     _debug_contents: Tuple[str, ...] = ("wirtnNetwork",)
 
     pduType = 0x00
@@ -487,7 +484,6 @@ class WhoIsRouterToNetwork(NPDU):
 
 @register_npdu_type
 class IAmRouterToNetwork(NPDU):
-
     _debug_contents: Tuple[str, ...] = ("iartnNetworkList",)
 
     pduType = 0x01
@@ -530,7 +526,6 @@ class IAmRouterToNetwork(NPDU):
 
 @register_npdu_type
 class ICouldBeRouterToNetwork(NPDU):
-
     _debug_contents: Tuple[str, ...] = ("icbrtnNetwork", "icbrtnPerformanceIndex")
 
     pduType = 0x02
@@ -575,7 +570,6 @@ class ICouldBeRouterToNetwork(NPDU):
 
 @register_npdu_type
 class RejectMessageToNetwork(NPDU):
-
     _debug_contents: Tuple[str, ...] = ("rmtnRejectReason", "rmtnDNET")
 
     pduType = 0x03
@@ -620,7 +614,6 @@ class RejectMessageToNetwork(NPDU):
 
 @register_npdu_type
 class RouterBusyToNetwork(NPDU):
-
     _debug_contents: Tuple[str, ...] = ("rbtnNetworkList",)
 
     pduType = 0x04
@@ -663,7 +656,6 @@ class RouterBusyToNetwork(NPDU):
 
 @register_npdu_type
 class RouterAvailableToNetwork(NPDU):
-
     _debug_contents: Tuple[str, ...] = ("ratnNetworkList",)
 
     pduType = 0x05
@@ -705,7 +697,6 @@ class RouterAvailableToNetwork(NPDU):
 
 
 class RoutingTableEntry(DebugContents):
-
     _debug_contents: Tuple[str, ...] = ("rtDNET", "rtPortID", "rtPortInfo")
     rtDNET: int
     rtPortID: int
@@ -860,7 +851,6 @@ class InitializeRoutingTableAck(NPDU):
 
 @register_npdu_type
 class EstablishConnectionToNetwork(NPDU):
-
     _debug_contents: Tuple[str, ...] = ("ectnDNET", "ectnTerminationTime")
 
     pduType = 0x08
@@ -905,7 +895,6 @@ class EstablishConnectionToNetwork(NPDU):
 
 @register_npdu_type
 class DisconnectConnectionToNetwork(NPDU):
-
     _debug_contents: Tuple[str, ...] = ("dctnDNET",)
 
     pduType = 0x09
@@ -945,7 +934,6 @@ class DisconnectConnectionToNetwork(NPDU):
 
 @register_npdu_type
 class WhatIsNetworkNumber(NPDU):
-
     _debug_contents: Tuple[str, ...] = ()
 
     pduType = 0x12
@@ -978,7 +966,6 @@ class WhatIsNetworkNumber(NPDU):
 
 @register_npdu_type
 class NetworkNumberIs(NPDU):
-
     _debug_contents: Tuple[str, ...] = (
         "nniNet",
         "nniFlag",

@@ -142,7 +142,9 @@ class AddressMetaclass(type):
             if network_type not in network_types:
                 raise ValueError("invalid network type")
 
-            return super(AddressMetaclass, network_types[network_type]).__call__(*args, **kwargs)  # type: ignore[misc, no-any-return]
+            return super(AddressMetaclass, network_types[network_type]).__call__(
+                *args, **kwargs
+            )  # type: ignore[misc, no-any-return]
 
         if not args:
             if _debug:
@@ -178,13 +180,21 @@ class AddressMetaclass(type):
                 raise ValueError("invalid address")
 
             if len(addr_bytes) == 1:
-                return super(AddressMetaclass, ARCNETAddress).__call__(addr_bytes, **kwargs)  # type: ignore[misc, no-any-return]
+                return super(AddressMetaclass, ARCNETAddress).__call__(
+                    addr_bytes, **kwargs
+                )  # type: ignore[misc, no-any-return]
             if len(addr_bytes) == 3:
-                return super(AddressMetaclass, VirtualAddress).__call__(addr_bytes, **kwargs)  # type: ignore[misc, no-any-return]
+                return super(AddressMetaclass, VirtualAddress).__call__(
+                    addr_bytes, **kwargs
+                )  # type: ignore[misc, no-any-return]
             if len(addr_bytes) == 6:
-                return super(AddressMetaclass, IPv4Address).__call__(addr_bytes, **kwargs)  # type: ignore[misc, no-any-return]
+                return super(AddressMetaclass, IPv4Address).__call__(
+                    addr_bytes, **kwargs
+                )  # type: ignore[misc, no-any-return]
             if len(addr_bytes) == 18:
-                return super(AddressMetaclass, IPv6Address).__call__(addr_bytes, **kwargs)  # type: ignore[misc, no-any-return]
+                return super(AddressMetaclass, IPv6Address).__call__(
+                    addr_bytes, **kwargs
+                )  # type: ignore[misc, no-any-return]
 
             raise ValueError("invalid address")
 
@@ -227,12 +237,16 @@ class AddressMetaclass(type):
                 if global_broadcast and local_broadcast:
                     if _debug:
                         AddressMetaclass._debug("    - global broadcast")
-                    address = super(AddressMetaclass, GlobalBroadcast).__call__(**kwargs)  # type: ignore[misc]
+                    address = super(AddressMetaclass, GlobalBroadcast).__call__(
+                        **kwargs
+                    )  # type: ignore[misc]
 
                 elif net and local_broadcast:
                     if _debug:
                         AddressMetaclass._debug("    - remote broadcast: %r", net)
-                    address = super(AddressMetaclass, RemoteBroadcast).__call__(net_addr, **kwargs)  # type: ignore[misc]
+                    address = super(AddressMetaclass, RemoteBroadcast).__call__(
+                        net_addr, **kwargs
+                    )  # type: ignore[misc]
 
                 elif local_broadcast:
                     if _debug:
@@ -253,9 +267,13 @@ class AddressMetaclass(type):
                         local_addr_bytes = struct.pack("B", local_addr_byte)
 
                     if net_addr > 0:
-                        address = super(AddressMetaclass, RemoteStation).__call__(net_addr, local_addr_bytes, **kwargs)  # type: ignore[misc]
+                        address = super(AddressMetaclass, RemoteStation).__call__(
+                            net_addr, local_addr_bytes, **kwargs
+                        )  # type: ignore[misc]
                     else:
-                        address = super(AddressMetaclass, LocalStation).__call__(local_addr_bytes, **kwargs)  # type: ignore[misc]
+                        address = super(AddressMetaclass, LocalStation).__call__(
+                            local_addr_bytes, **kwargs
+                        )  # type: ignore[misc]
 
                 if local_ipv4_addr:
                     if _debug:
@@ -265,9 +283,15 @@ class AddressMetaclass(type):
                     if not local_ipv4_port:
                         local_ipv4_port = "47808"
 
-                    address = super(AddressMetaclass, IPv4Address).__call__(f"{local_ipv4_addr}/{local_ipv4_net}", port=int(local_ipv4_port), **kwargs)  # type: ignore[misc]
+                    address = super(AddressMetaclass, IPv4Address).__call__(
+                        f"{local_ipv4_addr}/{local_ipv4_net}",
+                        port=int(local_ipv4_port),
+                        **kwargs,
+                    )  # type: ignore[misc]
                     if net_addr > 0:
-                        address = super(AddressMetaclass, RemoteStation).__call__(net_addr, address.addrAddr, **kwargs)  # type: ignore[misc]
+                        address = super(AddressMetaclass, RemoteStation).__call__(
+                            net_addr, address.addrAddr, **kwargs
+                        )  # type: ignore[misc]
 
                 if local_ipv6_addr:
                     if _debug:
@@ -275,9 +299,13 @@ class AddressMetaclass(type):
                     if not local_ipv6_port:
                         local_ipv6_port = "47808"
 
-                    address = super(AddressMetaclass, IPv6Address).__call__(local_ipv6_addr, port=int(local_ipv6_port), **kwargs)  # type: ignore[misc]
+                    address = super(AddressMetaclass, IPv6Address).__call__(
+                        local_ipv6_addr, port=int(local_ipv6_port), **kwargs
+                    )  # type: ignore[misc]
                     if net_addr > 0:
-                        address = super(AddressMetaclass, RemoteStation).__call__(net_addr, address.addrAddr, **kwargs)  # type: ignore[misc]
+                        address = super(AddressMetaclass, RemoteStation).__call__(
+                            net_addr, address.addrAddr, **kwargs
+                        )  # type: ignore[misc]
 
                 # if this is a remote address, add the network
                 if net and (not global_broadcast) and (not local_broadcast):
@@ -302,19 +330,25 @@ class AddressMetaclass(type):
                         AddressMetaclass._debug("    - adding IPv4 route")
                     if not route_ipv4_port:
                         route_ipv4_port = "47808"
-                    address.addrRoute = super(AddressMetaclass, IPv4Address).__call__((route_ipv4_addr, int(route_ipv4_port)))  # type: ignore[misc]
+                    address.addrRoute = super(AddressMetaclass, IPv4Address).__call__(
+                        (route_ipv4_addr, int(route_ipv4_port))
+                    )  # type: ignore[misc]
 
                 if route_ipv6_addr:
                     if _debug:
                         AddressMetaclass._debug("    - adding IPv6 route")
                     if not route_ipv6_port:
                         route_ipv6_port = "47808"
-                    address.addrRoute = super(AddressMetaclass, IPv6Address).__call__((route_ipv4_addr, int(route_ipv4_port)))  # type: ignore[misc]
+                    address.addrRoute = super(AddressMetaclass, IPv6Address).__call__(
+                        (route_ipv4_addr, int(route_ipv4_port))
+                    )  # type: ignore[misc]
 
                 return address  # type: ignore[no-any-return]
 
             if ethernet_re.match(addr):
-                return super(AddressMetaclass, EthernetAddress).__call__(*args, **kwargs)  # type: ignore[misc, no-any-return]
+                return super(AddressMetaclass, EthernetAddress).__call__(
+                    *args, **kwargs
+                )  # type: ignore[misc, no-any-return]
 
             if interface_port_re.match(addr):
                 return super(AddressMetaclass, IPv4Address).__call__(*args, **kwargs)  # type: ignore[misc, no-any-return]
@@ -334,11 +368,15 @@ class AddressMetaclass(type):
                 if isinstance(test_address, ipaddress.IPv4Address):
                     if _debug:
                         AddressMetaclass._debug("    - ipv4")
-                    return super(AddressMetaclass, IPv4Address).__call__(addr, port=port, **kwargs)  # type: ignore[misc, no-any-return]
+                    return super(AddressMetaclass, IPv4Address).__call__(
+                        addr, port=port, **kwargs
+                    )  # type: ignore[misc, no-any-return]
                 elif isinstance(test_address, ipaddress.IPv6Address):
                     if _debug:
                         AddressMetaclass._debug("    - ipv6")
-                    return super(AddressMetaclass, IPv6Address).__call__(addr, port=port, **kwargs)  # type: ignore[misc, no-any-return]
+                    return super(AddressMetaclass, IPv6Address).__call__(
+                        addr, port=port, **kwargs
+                    )  # type: ignore[misc, no-any-return]
             except Exception as err:
                 if _debug:
                     AddressMetaclass._debug("    - err: %r", err)
@@ -926,7 +964,7 @@ class EthernetBroadcastAddress(LocalBroadcast, EthernetAddress):
         if _debug:
             EthernetAddress._debug("__init__")
         LocalBroadcast.__init__(self, network_type="ethernet")
-        EthernetAddress.__init__(self, "\xFF" * 6)
+        EthernetAddress.__init__(self, "\xff" * 6)
 
         # reset the address type
         self.addrType = Address.localBroadcastAddr

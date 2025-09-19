@@ -94,15 +94,21 @@ class SequenceMetaclass(ElementMetaclass):
         for supercls in reversed(superclasses):
             if hasattr(supercls, "_elements"):
                 if _debug:
-                    SequenceMetaclass._debug("    - supercls._elements: %r", supercls._elements)  # type: ignore[attr-defined]
+                    SequenceMetaclass._debug(
+                        "    - supercls._elements: %r", supercls._elements
+                    )  # type: ignore[attr-defined]
                 _elements.update(supercls._elements)  # type: ignore[attr-defined]
             if hasattr(supercls, "_inits"):
                 if _debug:
-                    SequenceMetaclass._debug("    - supercls._inits: %r", supercls._inits)  # type: ignore[attr-defined]
+                    SequenceMetaclass._debug(
+                        "    - supercls._inits: %r", supercls._inits
+                    )  # type: ignore[attr-defined]
                 _inits.update(supercls._inits)  # type: ignore[attr-defined]
             if hasattr(supercls, "_order"):
                 if _debug:
-                    SequenceMetaclass._debug("    - supercls._order: %r", supercls._order)  # type: ignore[attr-defined]
+                    SequenceMetaclass._debug(
+                        "    - supercls._order: %r", supercls._order
+                    )  # type: ignore[attr-defined]
                 for element in supercls._order:  # type: ignore[attr-defined]
                     if element not in _order:
                         _order.append(element)

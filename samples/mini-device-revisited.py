@@ -54,7 +54,6 @@ See:
 - ScheduleObject implementation in bacpypes3/local/schedule.py for how weekly schedules are evaluated.
 """
 
-
 import asyncio
 import sys
 from datetime import date
@@ -76,14 +75,16 @@ _log = ModuleLogger(globals())
 # Interval for updating values
 INTERVAL = 5.0
 
+
 # ========== Weekly Schedule Config ==========
 def make_time_value(t, v):
     return TimeValue(time=Time(t), value=v)
 
+
 # Weekday: 8AM–5PM occupied
 weekday_schedule = DailySchedule(
     daySchedule=[
-        make_time_value((8, 0, 0, 0), Integer(1)),   # 8:00 AM ON
+        make_time_value((8, 0, 0, 0), Integer(1)),  # 8:00 AM ON
         make_time_value((17, 0, 0, 0), Integer(0)),  # 5:00 PM OFF
     ]
 )
@@ -91,7 +92,7 @@ weekday_schedule = DailySchedule(
 # Weekend: always off
 weekend_schedule = DailySchedule(
     daySchedule=[
-        make_time_value((0, 0, 0, 0), Integer(0)),   # Midnight OFF
+        make_time_value((0, 0, 0, 0), Integer(0)),  # Midnight OFF
     ]
 )
 
@@ -108,8 +109,8 @@ weekly_schedule = [
 
 # Effective period (2024-01-01 to 2030-12-31)
 effective_period = DateRange(
-    startDate=Date((2024 - 1900, 1, 1, 1)),   # Jan 1, 2024, Monday
-    endDate=Date((2030 - 1900, 12, 31, 7)),   # Dec 31, 2030, Sunday
+    startDate=Date((2024 - 1900, 1, 1, 1)),  # Jan 1, 2024, Monday
+    endDate=Date((2030 - 1900, 12, 31, 7)),  # Dec 31, 2030, Sunday
 )
 # =============================================
 
@@ -211,7 +212,9 @@ class SampleApplication:
                 _log.debug(f"Read-Only BV: {self.read_only_bv.presentValue}")
                 _log.debug(f"Commandable AV: {self.commandable_av.presentValue}")
                 _log.debug(f"Commandable BV: {self.commandable_bv.presentValue}")
-                _log.debug(f"Schedule Present Value: {self.schedule_obj.presentValue.get_value()}")
+                _log.debug(
+                    f"Schedule Present Value: {self.schedule_obj.presentValue.get_value()}"
+                )
 
 
 async def main():

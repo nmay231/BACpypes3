@@ -8,6 +8,9 @@ mypy:
 pytest:
     uv run pytest
 
+lint-fix:
+    uv run ruff format
+
 [script, unix]
 bdist:
     # remove everything in the current dist/ directory

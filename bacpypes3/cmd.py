@@ -199,7 +199,8 @@ class CmdProfile:
                 else:
                     raise RuntimeError(f"option {arg}: switches must be boolean")
             elif isinstance(
-                arg_type, typing._GenericAlias  # type: ignore[attr-defined]
+                arg_type,
+                typing._GenericAlias,  # type: ignore[attr-defined]
             ) and (arg_type.__origin__ is list):
                 # make a list of the converted the values
                 arg_values = []

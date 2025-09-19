@@ -6,45 +6,21 @@ Object
 
 from __future__ import annotations
 
-import sys
 import inspect
+import sys
 from functools import partial
-
 from typing import (
-    cast,
     Any as _Any,
+)
+from typing import (
     Callable,
     Dict,
     Optional,
     Tuple,
     Union,
+    cast,
 )
 
-from .debugging import ModuleLogger, bacpypes_debugging
-from .primitivedata import (
-    BitString,
-    Boolean,
-    CharacterString,
-    Date,
-    Double,
-    Integer,
-    ObjectIdentifier,
-    ObjectType,
-    OctetString,
-    Real,
-    Time,
-    Unsigned,
-    Unsigned16,
-    Unsigned8,
-)
-
-from .constructeddata import (
-    AnyAtomic,
-    ArrayOf,
-    ListOf,
-    Sequence,
-    SequenceMetaclass,
-)
 from .basetypes import (
     AccessCredentialDisable,
     AccessCredentialDisableReason,
@@ -128,8 +104,8 @@ from .basetypes import (
     LoggingType,
     LogMultipleRecord,
     LogRecord,
-    Maintenance,
     MACAddress,
+    Maintenance,
     NameValue,
     NameValueCollection,
     NetworkNumberQuality,
@@ -187,6 +163,30 @@ from .basetypes import (
     VTClass,
     VTSession,
     WriteStatus,
+)
+from .constructeddata import (
+    AnyAtomic,
+    ArrayOf,
+    ListOf,
+    Sequence,
+    SequenceMetaclass,
+)
+from .debugging import ModuleLogger, bacpypes_debugging
+from .primitivedata import (
+    BitString,
+    Boolean,
+    CharacterString,
+    Date,
+    Double,
+    Integer,
+    ObjectIdentifier,
+    ObjectType,
+    OctetString,
+    Real,
+    Time,
+    Unsigned,
+    Unsigned8,
+    Unsigned16,
 )
 from .vendor import get_vendor_info
 
@@ -944,7 +944,12 @@ class AnalogValueObject(Object):
 
 class AuditLogObject(Object):
     _required = (
-        "statusFlags" "eventState",
+        # TODO: The original source had this bug where the strings were
+        # implicitly concatenated, but I guess this class isn't used often
+        # enough to be an issue
+        # "statusFlags" "eventState",
+        "statusFlags",
+        "eventState",
         "enable",
         "bufferSize",
         "logBuffer",

@@ -293,7 +293,6 @@ def key_value_contents(use_dict=None, as_class=dict, key_values=()):
 
 
 class FDTEntry(DebugContents):
-
     _debug_contents = ("fdAddress", "fdTTL", "fdRemain")
 
     fdAddress: IPv6Address
@@ -335,7 +334,6 @@ class FDTEntry(DebugContents):
 
 @register_bvlpdu_type
 class Result(LPDU):
-
     _debug_contents: Tuple[str, ...] = (
         "bvlciSourceVirtualAddress",
         "bvlciResultCode",
@@ -468,7 +466,6 @@ class OriginalUnicastNPDU(LPDU):
 
 @register_bvlpdu_type
 class OriginalBroadcastNPDU(LPDU):
-
     _debug_contents: Tuple[str, ...] = ("bvlciSourceVirtualAddress",)
 
     bvlciFunction = LPCI.originalBroadcastNPDU
@@ -877,7 +874,6 @@ class VirtualAddressResolutionACK(LPDU):
 
 @register_bvlpdu_type
 class ForwardedNPDU(LPDU):
-
     _debug_contents: Tuple[str, ...] = (
         "bvlciSourceVirtualAddress",
         "bvlciSourceIPv6Address",
@@ -1094,7 +1090,6 @@ class DeleteForeignDeviceTableEntry(LPDU):
 
 @register_bvlpdu_type
 class DistributeBroadcastToNetwork(LPDU):
-
     _debug_contents: Tuple[str, ...] = (
         "bvlciSourceVirtualAddress",
         "bvlciSourceIPv6Address",

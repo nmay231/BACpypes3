@@ -208,7 +208,6 @@ class SecurePathHeaderOption(HeaderOption):
 
 
 class ProprietaryHeaderOption(HeaderOption):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = ("vendor_identifier", "proprietary_option_type")
 
@@ -493,7 +492,6 @@ class LPDU(LPCI, PDUData):
 
 @bacpypes_debugging
 class BVLLCodec(Client[PDU], Server[LPDU]):
-
     _debug: Callable[..., None]
 
     def __init__(self, cid=None, sid=None) -> None:
@@ -581,7 +579,6 @@ def key_value_contents(use_dict=None, as_class=dict, key_values=()):
 
 @register_bvlpdu_type
 class Result(LPDU):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = (
         "result_function",
@@ -705,7 +702,6 @@ class Result(LPDU):
 
 @register_bvlpdu_type
 class EncapsulatedNPDU(LPDU):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = ()
 
@@ -751,7 +747,6 @@ class EncapsulatedNPDU(LPDU):
 
 @register_bvlpdu_type
 class AddressResolution(LPDU):
-
     bvlcFunction = LPCI.addressResolution
 
     @classmethod
@@ -769,7 +764,6 @@ class AddressResolution(LPDU):
 
 @register_bvlpdu_type
 class AddressResolutionACK(LPDU):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = ("websocket_uris",)
 
@@ -825,7 +819,6 @@ class AddressResolutionACK(LPDU):
 
 @register_bvlpdu_type
 class Advertisement(LPDU):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = (
         "hub_connection_status",
@@ -912,7 +905,6 @@ class Advertisement(LPDU):
 
 @register_bvlpdu_type
 class AdvertisementSolicitation(LPDU):
-
     bvlcFunction = LPCI.advertisementSolicitation
 
     @classmethod
@@ -930,7 +922,6 @@ class AdvertisementSolicitation(LPDU):
 
 @register_bvlpdu_type
 class ConnectRequest(LPDU):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = (
         "vmac_address",
@@ -1017,7 +1008,6 @@ class ConnectRequest(LPDU):
 
 @register_bvlpdu_type
 class ConnectAccept(LPDU):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = (
         "vmac_address",
@@ -1104,7 +1094,6 @@ class ConnectAccept(LPDU):
 
 @register_bvlpdu_type
 class DisconnectRequest(LPDU):
-
     bvlcFunction = LPCI.disconnectRequest
 
     @classmethod
@@ -1122,7 +1111,6 @@ class DisconnectRequest(LPDU):
 
 @register_bvlpdu_type
 class DisconnectACK(LPDU):
-
     bvlcFunction = LPCI.disconnectACK
 
     @classmethod
@@ -1140,7 +1128,6 @@ class DisconnectACK(LPDU):
 
 @register_bvlpdu_type
 class HeartbeatRequest(LPDU):
-
     bvlcFunction = LPCI.heartbeatRequest
 
     @classmethod
@@ -1158,7 +1145,6 @@ class HeartbeatRequest(LPDU):
 
 @register_bvlpdu_type
 class HeartbeatACK(LPDU):
-
     bvlcFunction = LPCI.heartbeatACK
 
     @classmethod
@@ -1176,7 +1162,6 @@ class HeartbeatACK(LPDU):
 
 @register_bvlpdu_type
 class ProprietaryMessage(LPDU):
-
     _debug: Callable[..., None]
     _debug_contents: Tuple[str, ...] = (
         "vendor_identifier",
